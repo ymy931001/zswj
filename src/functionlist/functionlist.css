@@ -1,0 +1,231 @@
+
+.covers{
+  width: 100%;
+  min-height: 100vh;
+  background: url(./background.png) no-repeat center  center;
+  background-size:cover;
+  padding-bottom: 5vh;
+}
+
+#functionlist .header{
+  background: url(./header.png) no-repeat center center;
+  width: 100%;
+  height: 100px;
+  font-size: 34px;
+  color:white;
+  font-weight: bold;
+  text-align: center;
+  line-height: 100px;
+}
+
+#functionlist .headerright{
+  float: right;
+}
+
+#functionlist .lefttype{
+    width: 191px;
+    height: 70px;
+    background: url(./left.png) no-repeat center center;
+    text-align: center;
+    color:white;
+    font-size: 24px;
+    line-height: 70px;
+    margin-right: 50px;
+}
+
+#functionlist  .conttitle{
+  width: 320px;
+  height: 88px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  background: url(./back1.png) no-repeat center center;
+  font-size: 24px;
+  color:white;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  cursor: pointer;
+  transition: 1s all;
+  margin-right: 30px;
+}
+
+#functionlist  .conttitle:hover{
+  background: url(./back1hover.png) no-repeat center center;
+  transition: 1s all;
+}
+
+#functionlist  .contline{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 70px;
+}
+
+
+#functionlist .lefttypemid{
+  width: 191px;
+  height: 70px;
+  background: url(./left2.png) no-repeat center center;
+  text-align: center;
+  color:white;
+  font-size: 24px;
+  line-height: 70px;
+  margin-right: 50px;
+}
+
+#functionlist  .conttitlemid{
+width: 320px;
+height: 88px;
+padding-left: 20px;
+padding-right: 20px;
+text-align: center;
+background: url(./back2.png) no-repeat center center;
+font-size: 24px;
+color:white;
+display: flex;
+align-items: center;
+justify-content: space-around;
+cursor: pointer;
+transition: 1s all;
+margin-right: 30px;
+}
+
+#functionlist  .conttitlemid:hover{
+background: url(./back2hover.png) no-repeat center center;
+transition: 1s all;
+}
+
+
+
+
+#functionlist .lefttypebot{
+  width: 191px;
+  height: 70px;
+  background: url(./left3.png) no-repeat center center;
+  text-align: center;
+  color:white;
+  font-size: 24px;
+  line-height: 70px;
+  margin-right: 50px;
+}
+
+#functionlist  .conttitlebot{
+width: 320px;
+height: 88px;
+padding-left: 20px;
+padding-right: 20px;
+text-align: center;
+background: url(./back3.png) no-repeat center center;
+font-size: 24px;
+color:white;
+display: flex;
+align-items: center;
+justify-content: space-around;
+cursor: pointer;
+transition: 1s all;
+margin-right: 30px;
+}
+
+#functionlist  .conttitlebot:hover{
+background: url(./back3hover.png) no-repeat center center;
+transition: 1s all;
+}
+
+#functionlist .outline{
+  width: 80%;
+  margin:0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: -20px;
+  color:white;
+  margin-bottom: 100px;
+}
+
+.linetitle{
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  display: block;
+  width: 100%;
+  padding-bottom: 10px;
+}
+.linetext{
+  width: 150px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+.lefttitle{
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
+@media screen and (max-width: 1300px) {
+  #functionlist .outline{
+    width: 90%;
+    margin-bottom:70px;
+  }
+  #functionlist .contline{
+    margin-top: 50px;
+  }
+
+  #functionlist .lefttype{
+    font-size: 20px;
+  }
+  #functionlist .lefttypemid{
+    font-size: 20px;
+  }
+  #functionlist .lefttypebot{
+    font-size: 20px;
+  }
+
+  #functionlist  .conttitle{
+    width: 280px;
+    height: 70px;
+    line-height: 70px;
+    border:2px solid #7bb6ff;
+    border-radius: 10px;
+    font-size: 20px;
+  }
+
+  #functionlist  .conttitlemid{
+    width: 280px;
+    height: 70px;
+    line-height: 70px;
+    font-size: 20px;
+    border:2px solid #f8c56c;
+    border-radius: 10px;
+  }
+
+  #functionlist  .conttitlebot{
+    width: 280px;
+    height: 70px;
+    line-height: 70px;
+    font-size: 20px;
+    border:2px solid #88f7c1;
+    border-radius: 10px;
+  }
+
+  #functionlist  .imgsize{
+    width: 30px;
+  }
+  
+
+}
+
+
+
+
+@media screen and (max-height:600px) {
+  #functionlist .outline{
+    width: 90%;
+    margin-bottom:50px;
+  }
+  #functionlist .contline{
+    margin-top: 40px;
+  }
+
+  
+}
+

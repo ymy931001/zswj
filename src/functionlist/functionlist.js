@@ -131,35 +131,18 @@ class SignIn extends Component {
           </Link>
 
         </div>
-        <div className="contline">
-          <div className="lefttype">
-            执法办案
-          </div>
-          <div className="conttitle" onClick={this.platform1}>
-            <img src={require('./icon1.png')} alt="" className="imgsize" />
-            <span>在线监控</span>
-          </div>
-          <div className="conttitle" onClick={this.platform2}>
-            <img src={require('./icon2.png')} alt="" className="imgsize" />
-            <span>执法系统</span>
-          </div>
-          <div className="conttitle" onClick={this.platform3}>
-            <img src={require('./icon3.png')} alt="" className="imgsize" />
-            <span>监督协管</span>
-          </div>
-        </div>
 
         <div className="contline">
           <div className="lefttypemid">
             监测平台
           </div>
+          <div className="conttitlemid" onClick={this.platform10}>
+            <img src={require('./icon12.png')} alt="" className="imgsize" />
+            <span>数字大屏</span>
+          </div>
           <div className="conttitlemid" onClick={this.platform4}>
             <img src={require('./icon4.png')} alt="" className="imgsize" />
             <span>水质检测</span>
-          </div>
-          <div className="conttitlemid" onClick={this.platform5}>
-            <img src={require('./icon5.png')} alt="" className="imgsize" />
-            <span>酒店消毒</span>
           </div>
           <div className="conttitlemid" onClick={this.platform6}>
             <img src={require('./icon6.png')} alt="" className="imgsize" />
@@ -178,11 +161,32 @@ class SignIn extends Component {
             <img src={require('./icon8.png')} alt="" className="imgsize" />
             <span>空气放射</span>
           </div>
-          <div className="conttitlemid" onClick={this.platform10}>
-            <img src={require('./icon12.png')} alt="" className="imgsize" />
-            <span>DATAV大屏</span>
+          <div className="conttitlemid" onClick={this.platform5}>
+            <img src={require('./icon5.png')} alt="" className="imgsize" />
+            <span>酒店消毒</span>
           </div>
         </div>
+
+        
+        <div className="contline">
+          <div className="lefttype">
+            执法办案
+          </div>
+          <div className="conttitle" onClick={this.platform1}>
+            <img src={require('./icon1.png')} alt="" className="imgsize" />
+            <span>在线监控</span>
+          </div>
+          <div className="conttitle" onClick={this.platform2}>
+            <img src={require('./icon2.png')} alt="" className="imgsize" />
+            <span>执法系统</span>
+          </div>
+          <div className="conttitle" onClick={this.platform3}>
+            <img src={require('./icon3.png')} alt="" className="imgsize" />
+            <span>监督协管</span>
+          </div>
+        </div>
+
+     
 
         <div className="contline">
           <div className="lefttypebot">

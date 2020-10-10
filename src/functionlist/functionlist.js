@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
-import { Modal, Input } from "antd";
-import { url, getAllPlatformLoginInfo } from "../axios";
+import { Modal, Input, message } from "antd";
+import { url, getAllPlatformLoginInfo, editPlatformLoginInfo, getPlatformLoginInfoByType, urls } from "../axios";
+import http from 'axios';
 import { createForm } from 'rc-form';
 import "./functionlist.css";
 
@@ -39,14 +40,47 @@ class SignIn extends Component {
       visible: true
     })
     getAllPlatformLoginInfo([
-      `Bearer ${localStorage.getItem(
-        "accesstokens"
-      )}`
+
     ]).then(res => {
       if (res.data.message === 'success') {
-        this.setState({
-          visible: true
-        })
+        for (var i in res.data.data) {
+          if (res.data.data[i].platform === 1) {
+            this.setState({
+              conut1: res.data.data[i].name,
+              password1: res.data.data[i].pwd
+            })
+          }
+          if (res.data.data[i].platform === 2) {
+            this.setState({
+              conut2: res.data.data[i].name,
+              password2: res.data.data[i].pwd
+            })
+          }
+          if (res.data.data[i].platform === 3) {
+            this.setState({
+              conut3: res.data.data[i].name,
+              password3: res.data.data[i].pwd
+            })
+          }
+          if (res.data.data[i].platform === 4) {
+            this.setState({
+              conut4: res.data.data[i].name,
+              password4: res.data.data[i].pwd
+            })
+          }
+          if (res.data.data[i].platform === 5) {
+            this.setState({
+              conut5: res.data.data[i].name,
+              password5: res.data.data[i].pwd
+            })
+          }
+          if (res.data.data[i].platform === 6) {
+            this.setState({
+              conut6: res.data.data[i].name,
+              password6: res.data.data[i].pwd
+            })
+          }
+        }
       }
     });
 
@@ -78,6 +112,48 @@ class SignIn extends Component {
     window.open("https://zj.waterview.cn/")
   }
 
+  //吸烟监控
+  platform6 = () => {
+    getPlatformLoginInfoByType([
+      3
+    ]).then(res => {
+      if (res.data.message === 'success') {
+        this.setState({
+          name: res.data.data.name,
+          password: res.data.data.pwd,
+        }, function () {
+          http.defaults.headers.get['Content-Type'] = "application/x-www-form-urlencoded"
+          http.get(urls + '/login?username=' + this.state.name + '&password=' + this.state.password + '&type=user&grant_type=password', {
+            auth: {
+              username: "webApp",
+              password: 'webApp',
+            }
+          }).then(res => {
+            if (res.data.status === 1003) {
+              message.error("用户名不存在！");
+            }
+            if (res.data.status === 1004) {
+              message.error("密码错误");
+            }
+            if (res.data.status === -1) {
+              message.error("账号已禁用");
+            }
+            if (res.data.status === 1) {
+              localStorage.setItem('token', res.data.data.access_token);
+              localStorage.setItem('usertype', res.data.data.type);
+              localStorage.setItem('realname', res.data.data.realname);
+              localStorage.setItem("currenttimes", new Date().getTime());
+              localStorage.setItem("menulist", JSON.stringify(res.data.data.menu));
+              localStorage.setItem("unitTree", JSON.stringify(res.data.data.unitTree[0].children));
+              localStorage.setItem("AreaTree", JSON.stringify(res.data.data.AreaTree[0].children));
+              window.open("http://smoke.terabits.cn/app/alarm")
+            }
+          })
+        })
+      }
+    });
+  }
+
   //空气放射
   platform7 = () => {
     window.open("http://47.100.197.207:8080")
@@ -106,12 +182,125 @@ class SignIn extends Component {
     })
   }
 
+
+  //账号输入
+  conut1 = (e) => {
+    this.setState({
+      conut1: e.target.value
+    })
+  }
+  //密码输入
+  password1 = (e) => {
+    this.setState({
+      password1: e.target.value
+    })
+  }
+
+  //账号输入
+  conut2 = (e) => {
+    this.setState({
+      conut2: e.target.value
+    })
+  }
+  //密码输入
+  password2 = (e) => {
+    this.setState({
+      password2: e.target.value
+    })
+  }
+  //账号输入
+  conut3 = (e) => {
+    this.setState({
+      conut3: e.target.value
+    })
+  }
+  //密码输入
+  password3 = (e) => {
+    this.setState({
+      password3: e.target.value
+    })
+  }
+  //账号输入
+  conut4 = (e) => {
+    this.setState({
+      conut4: e.target.value
+    })
+  }
+  //密码输入
+  password4 = (e) => {
+    this.setState({
+      password4: e.target.value
+    })
+  }
+  //账号输入
+  conut5 = (e) => {
+    this.setState({
+      conut5: e.target.value
+    })
+  }
+  //密码输入
+  password5 = (e) => {
+    this.setState({
+      password5: e.target.value
+    })
+  }
+  //账号输入
+  conut6 = (e) => {
+    this.setState({
+      conut6: e.target.value
+    })
+  }
+  //密码输入
+  password6 = (e) => {
+    this.setState({
+      password6: e.target.value
+    })
+  }
   //修改账户
   handleOk = () => {
-    // message.success('修改成功')
-    this.setState({
-      visible: false,
-    })
+
+    var arr = [{
+      "platform": 1,
+      "name": this.state.conut1,
+      "pwd": this.state.password1,
+      "id": 6,
+    }, {
+      "platform": 2,
+      "name": this.state.conut2,
+      "pwd": this.state.password2,
+      "id": 7,
+    }, {
+      "platform": 3,
+      "name": this.state.conut3,
+      "pwd": this.state.password3,
+      "id": 8,
+    }, {
+      "platform": 4,
+      "name": this.state.conut4,
+      "pwd": this.state.password4,
+      "id": 9,
+    }, {
+      "platform": 5,
+      "name": this.state.conut5,
+      "pwd": this.state.password5,
+      "id": 10,
+    }, {
+      "platform": 6,
+      "name": this.state.conut6,
+      "pwd": this.state.password6,
+      "id": 11,
+    }]
+    editPlatformLoginInfo([
+      JSON.stringify(arr)
+    ]).then(res => {
+      if (res.data.message === 'success') {
+        message.success('修改成功')
+        this.setState({
+          visible: false,
+        })
+      }
+    });
+
   }
 
 
@@ -167,7 +356,7 @@ class SignIn extends Component {
           </div>
         </div>
 
-        
+
         <div className="contline">
           <div className="lefttype">
             执法办案
@@ -186,7 +375,7 @@ class SignIn extends Component {
           </div>
         </div>
 
-     
+
 
         <div className="contline">
           <div className="lefttypebot">
@@ -218,54 +407,20 @@ class SignIn extends Component {
         >
           <div>
             <div className="linetitle">
-              <span className="lefttitle" >在线监控：</span>
-              <span>用户名</span>
-              <Input placeholder="请输入用户名"
-                autoComplete="off"
-                value={this.state.name}
-                onChange={this.name}
-                className="linetext"
-              />
-              <span>密码</span>
-              <Input placeholder="请输入密码"
-                className="linetext"
-                autoComplete="off"
-                value={this.state.host}
-                onChange={this.host}
-              />
-            </div>
-            <div className="linetitle">
-              <span className="lefttitle">监督协管：</span>
-              <span>用户名</span>
-              <Input placeholder="请输入用户名"
-                className="linetext"
-                autoComplete="off"
-                value={this.state.name}
-                onChange={this.name}
-              />
-              <span>密码</span>
-              <Input placeholder="请输入密码"
-                className="linetext"
-                autoComplete="off"
-                value={this.state.host}
-                onChange={this.host}
-              />
-            </div>
-            <div className="linetitle">
               <span className="lefttitle">水质检测：</span>
               <span>用户名</span>
               <Input placeholder="请输入用户名"
                 className="linetext"
                 autoComplete="off"
-                value={this.state.name}
-                onChange={this.name}
+                value={this.state.conut1}
+                onChange={this.conut1}
               />
               <span>密码</span>
               <Input placeholder="请输入密码"
                 className="linetext"
                 autoComplete="off"
-                value={this.state.host}
-                onChange={this.host}
+                value={this.state.password1}
+                onChange={this.password1}
               />
             </div>
             <div className="linetitle">
@@ -274,15 +429,15 @@ class SignIn extends Component {
               <Input placeholder="请输入用户名"
                 className="linetext"
                 autoComplete="off"
-                value={this.state.name}
-                onChange={this.name}
+                value={this.state.conut2}
+                onChange={this.conut2}
               />
               <span>密码</span>
               <Input placeholder="请输入密码"
                 className="linetext"
                 autoComplete="off"
-                value={this.state.host}
-                onChange={this.host}
+                value={this.state.password2}
+                onChange={this.password2}
               />
             </div>
             <div className="linetitle">
@@ -291,35 +446,68 @@ class SignIn extends Component {
               <Input placeholder="请输入用户名"
                 className="linetext"
                 autoComplete="off"
-                value={this.state.name}
-                onChange={this.name}
+                value={this.state.conut3}
+                onChange={this.conut3}
               />
               <span>密码</span>
               <Input placeholder="请输入密码"
                 className="linetext"
                 autoComplete="off"
-                value={this.state.host}
-                onChange={this.host}
+                value={this.state.password3}
+                onChange={this.password3}
               />
             </div>
-            <div className="linetitle" style={{ border: 'none' }}>
+            <div className="linetitle">
               <span className="lefttitle">空气放射：</span>
               <span>用户名</span>
               <Input placeholder="请输入用户名"
                 className="linetext"
                 autoComplete="off"
-                value={this.state.name}
-                onChange={this.name}
+                value={this.state.conut4}
+                onChange={this.conut4}
               />
               <span>密码</span>
               <Input placeholder="请输入密码"
                 className="linetext"
                 autoComplete="off"
-                value={this.state.host}
-                onChange={this.host}
+                value={this.state.password4}
+                onChange={this.password4}
               />
             </div>
-
+            <div className="linetitle">
+              <span className="lefttitle" >在线监控：</span>
+              <span>用户名</span>
+              <Input placeholder="请输入用户名"
+                autoComplete="off"
+                value={this.state.conut5}
+                onChange={this.conut5}
+                className="linetext"
+              />
+              <span>密码</span>
+              <Input placeholder="请输入密码"
+                className="linetext"
+                autoComplete="off"
+                value={this.state.password5}
+                onChange={this.password5}
+              />
+            </div>
+            <div className="linetitle" style={{ border: 'none' }}>
+              <span className="lefttitle">执法系统：</span>
+              <span>用户名</span>
+              <Input placeholder="请输入用户名"
+                className="linetext"
+                autoComplete="off"
+                value={this.state.conut6}
+                onChange={this.conut6}
+              />
+              <span>密码</span>
+              <Input placeholder="请输入密码"
+                className="linetext"
+                autoComplete="off"
+                value={this.state.password6}
+                onChange={this.password6}
+              />
+            </div>
           </div>
         </Modal>
       </div>

@@ -7,7 +7,7 @@ axios.interceptors.request.use(
   config => {
     // 发送请求之前做什么
     //如果有token给所有的headers加入token参数
-    config.headers.authorization = localStorage.getItem('accesstokens') === null || localStorage.getItem('accesstokens') === undefined ? "" : "Bearer " + localStorage.getItem('accesstokens');
+    config.headers.Authorization = localStorage.getItem('accesstokens') === null || localStorage.getItem('accesstokens') === undefined ? "" : "bearer " + localStorage.getItem('accesstokens');
     // if (config.method === "post") {
     //   if (localStorage.getItem("token") && localStorage.getItem("userID")) {
     //     config.headers.authorization = `Bearer ${localStorage.getItem(
@@ -92,6 +92,23 @@ export default {
       params: { ...params }, // get 请求时带的参数
       timeout: 10000,
       // responseType: 'blob',
+    }).then(
+      (response) => {
+        return checkStatus(response)
+      }
+    ).then(
+      (res) => {
+        return checkCode(res)
+      }
+    )
+  },
+
+  gets(url, params) {
+    return axios({
+      method: 'get',
+      url,
+      params: params, // get 请求时带的参数
+      timeout: 10000,
     }).then(
       (response) => {
         return checkStatus(response)

@@ -31,7 +31,7 @@ class SignIn extends Component {
           localStorage.setItem('accesstokens', res.data.data.token)
           message.success("登陆成功");
           // window.location.href = "http://datav.aliyuncs.com/share/9b68da0044bde51f14d239ebf67a6c6b"
-          window.location.href = "http://zswj.terabits.cn/functionlist"
+          window.location.href = "/functionlist"
         } else {
           message.error("用户名或密码错误");
         }
@@ -58,7 +58,7 @@ class SignIn extends Component {
         localStorage.setItem('accesstokens', res.data.data.token)
         message.success("登陆成功");
         // window.location.href = "http://datav.aliyuncs.com/share/9b68da0044bde51f14d239ebf67a6c6b"
-        window.location.href = "http://zswj.terabits.cn/functionlist"
+        window.location.href = "/functionlist"
       } else {
         message.error("用户名或密码错误");
       }

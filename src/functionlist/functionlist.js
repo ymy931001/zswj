@@ -139,14 +139,14 @@ class SignIn extends Component {
               message.error("账号已禁用");
             }
             if (res.data.status === 1) {
-              localStorage.setItem('token', res.data.data.access_token);
-              localStorage.setItem('usertype', res.data.data.type);
-              localStorage.setItem('realname', res.data.data.realname);
-              localStorage.setItem("currenttimes", new Date().getTime());
-              localStorage.setItem("menulist", JSON.stringify(res.data.data.menu));
-              localStorage.setItem("unitTree", JSON.stringify(res.data.data.unitTree[0].children));
-              localStorage.setItem("AreaTree", JSON.stringify(res.data.data.AreaTree[0].children));
-              window.open("http://smoke.terabits.cn/app/alarm")
+              // localStorage.setItem('token', res.data.data.access_token);
+              // localStorage.setItem('usertype', res.data.data.type);
+              // localStorage.setItem('realname', res.data.data.realname);
+              // localStorage.setItem("currenttimes", new Date().getTime());
+              // localStorage.setItem("menulist", JSON.stringify(res.data.data.menu));
+              // localStorage.setItem("unitTree", JSON.stringify(res.data.data.unitTree[0].children));
+              // localStorage.setItem("AreaTree", JSON.stringify(res.data.data.AreaTree[0].children));
+              window.open("http://smoke.terabits.cn?conut?==" + this.state.name + "&password?==" + this.state.password)
             }
           })
         })

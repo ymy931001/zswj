@@ -159,6 +159,13 @@ class SignIn extends Component {
     window.open("http://47.100.197.207:8080")
   }
 
+
+  //酒店消毒
+  platform5 = () => {
+    window.open("http://iva.terabits.cn:9090/auth/login/withoutCode?appKey=7f5b2e789e8c614b18765f7ee50f88bb&appSecret=83b5ecda9e45b4ad5a1ef80daaceb566")
+  }
+
+
   //监督风采
   platform8 = () => {
     window.open("http://115.231.121.150:83/JDFC.aspx")

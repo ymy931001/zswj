@@ -94,7 +94,8 @@ class SignIn extends Component {
   }
   //在线监控
   platform1 = () => {
-    window.open("https://115.231.112.230:666")
+    // window.open("https://115.231.112.230:666")
+    window.open("https://112.53.191.133:666/cas/remoteLogin?loginType=&username=admin&password=67990438ada7f6bb11bb7ead9678bd73b281c5ec370a1403c5bc9ba28cb7efdc")
   }
 
   //执法系统

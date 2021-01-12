@@ -110,7 +110,9 @@ class SignIn extends Component {
 
   //水质检测
   platform4 = () => {
-    window.open("https://zj.waterview.cn/")
+    window.open(url + "/ShuiZhi_system?authorization=Bearer "+localStorage.getItem('accesstokens'))
+
+    // window.open("https://zj.waterview.cn/")
   }
 
   //吸烟监控
